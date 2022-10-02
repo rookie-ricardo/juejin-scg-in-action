@@ -1,0 +1,45 @@
+
+server:
+  shutdown: graceful
+  port: 8081
+
+spring:
+  application:
+    name: order-api
+  lifecycle:
+    timeout-per-shutdown-phase: 120s
+  redis:
+    lettuce:
+      pool:
+        enabled: true
+        max-active: 16
+        min-idle: 1
+      cluster:
+        refresh:
+          adaptive: true
+          period: 60
+
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          # 开启服务发现动态路由
+          enabled: true
+          # 是否将服务名称小写
+          lower-case-service-id: true
+      httpclient:
+        pool:
+          max-idle-time: 12000
+    nacos:
+      discovery:
+        group: public
+      config:
+        group: public
+        extension-configs:
+          - data-id: gateway-routes
+            group: public
+            refresh: true
+  profiles:
+    active: test
+
+

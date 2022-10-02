@@ -1,0 +1,30 @@
+spring:
+  redis:
+    host: 172.22.104.105
+    database: 0
+    port: 6379
+    connect-timeout: 5000
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: http://172.22.104.105:8848
+        namespace: public
+      config:
+        server-addr: http://172.22.104.105:8848
+#        file-extension: yaml
+        namespace: public
+
+#logging:
+#  level:
+#    org:
+#      springframework:
+#        cloud:
+#          gateway: debug
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: gateway
