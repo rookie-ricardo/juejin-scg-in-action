@@ -1,6 +1,6 @@
 spring:
   redis:
-    host: 172.24.158.195
+    host: 172.27.100.43
     database: 0
     port: 6379
     connect-timeout: 5000
@@ -8,10 +8,10 @@ spring:
   cloud:
     nacos:
       discovery:
-        server-addr: http://172.24.158.195:8848
+        server-addr: http://172.27.100.43:8848
         namespace: public
       config:
-        server-addr: http://172.24.158.195:8848
+        server-addr: http://172.27.100.43:8848
 #        file-extension: yaml
         namespace: public
 
