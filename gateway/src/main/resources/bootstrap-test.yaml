@@ -14,7 +14,7 @@ spring:
       config:
         server-addr: http://172.27.100.43:8848
 #        file-extension: yaml
-        namespace: public
+        namespace: gateway
 
 #logging:
 #  level:

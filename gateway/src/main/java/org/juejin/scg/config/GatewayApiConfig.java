@@ -39,7 +39,7 @@ public class GatewayApiConfig {
                                 .rateLimiter(RedisRateLimiter.class, c -> c.setReplenishRate(1).setBurstCapacity(10).setRequestedTokens(5))
                                 .configure(c -> c.setKeyResolver(apiTokenKeyResolver()).setDenyEmptyKey(true)))
                         .uri("lb://user-api"))
-                .route((r) -> r.path("/user/**").uri("lb://user-api"))
+//                .route((r) -> r.path("/user/**").uri("lb://user-api"))
                 .route((r) -> r.path("/order/**").uri("lb://order-api"))
                 .build();
     }

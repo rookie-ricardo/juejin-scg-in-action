@@ -34,10 +34,9 @@ spring:
         group: public
         service: gateway-api
       config:
-        group: public
         extension-configs:
           - data-id: gateway-routes
-            group: public
+            group: router
             refresh: true
   profiles:
     active: test

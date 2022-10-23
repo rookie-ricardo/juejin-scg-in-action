@@ -55,13 +55,13 @@ public class NacosListener {
 
     private static final String DATA_ID = "gateway-routes";
 
-    private static final String GROUP_ID = "gateway";
+    private static final String GROUP_ID = "router";
 
 
     @PostConstruct
     public void init() throws NacosException {
 
-//        nacosConfigListener();
+        nacosConfigListener();
 
         nacosServiceDiscoveryListener();
     }
@@ -92,10 +92,13 @@ public class NacosListener {
 
             @Override
             public void receiveConfigInfo(String configInfo) {
-                // 重载配置
+                // 序列化新路由
                 List<RouteDefinition> updateDefinitionList = JacksonUtils.toObj(configInfo, new TypeReference<List<RouteDefinition>>() {});
 
+                // 拿到新路由的所有id
                 List<String> ids = updateDefinitionList.stream().map(RouteDefinition::getId).collect(Collectors.toList());
+
+                // 拿到旧路由数据
                 Flux<RouteDefinition> routeDefinitions = routeDefinitionLocator.getRouteDefinitions();
 
                 routeDefinitions.doOnNext(r -> {

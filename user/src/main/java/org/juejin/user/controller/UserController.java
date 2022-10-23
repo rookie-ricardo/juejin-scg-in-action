@@ -10,4 +10,14 @@ public class UserController {
     public String test() {
         return "user-api";
     }
+
+    @GetMapping("/user/test1")
+    public String test1() {
+        return "user-api-test1";
+    }
+
+    @GetMapping("/user/test2")
+    public String test2() {
+        return "user-api-test2";
+    }
 }
